@@ -1,0 +1,19 @@
+# 빌드 산출물
+backend/target/
+frontend/dist/
+frontend/node_modules/
+
+# 로컬 SQLite 데이터베이스 (WAL/저널 파일 포함)
+backend/data/
+
+# 환경 변수 - GEMINI_API_KEY 등이 들어간다. 절대 커밋하지 않는다.
+.env
+.env.local
+*.env
+
+# IDE / OS
+.idea/
+.vscode/
+*.iml
+Thumbs.db
+desktop.ini
