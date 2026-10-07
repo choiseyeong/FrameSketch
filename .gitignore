@@ -17,3 +17,6 @@ backend/data/
 *.iml
 Thumbs.db
 desktop.ini
+
+# claude
+CLAUDE.md
