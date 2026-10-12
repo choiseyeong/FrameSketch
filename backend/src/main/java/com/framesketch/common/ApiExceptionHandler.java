@@ -1,11 +1,14 @@
 package com.framesketch.common;
 
+import com.framesketch.outline.GeminiUnavailableException;
+import com.framesketch.outline.InvalidLlmResponseException;
 import java.time.Instant;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.validation.FieldError;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -59,6 +62,27 @@ public class ApiExceptionHandler {
     @ExceptionHandler(IllegalArgumentException.class)
     public ResponseEntity<ErrorResponse> handleIllegalArgument(IllegalArgumentException e) {
         return ResponseEntity.badRequest().body(ErrorResponse.of(e.getMessage()));
+    }
+
+    /**
+     * JSON 본문이 깨졌거나 enum 값이 없는 등 역직렬화 단계에서 실패한 경우.
+     * 500 이 아니라 400 이 맞다 (클라이언트가 보낸 형식 문제).
+     */
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    public ResponseEntity<ErrorResponse> handleUnreadable(HttpMessageNotReadableException e) {
+        return ResponseEntity.badRequest().body(ErrorResponse.of("요청 본문 형식이 올바르지 않습니다."));
+    }
+
+    /** Gemini 를 쓸 수 없거나 호출이 실패한 경우. 서비스 자체는 살아 있음을 알리는 503. */
+    @ExceptionHandler(GeminiUnavailableException.class)
+    public ResponseEntity<ErrorResponse> handleGeminiUnavailable(GeminiUnavailableException e) {
+        return ResponseEntity.status(HttpStatus.SERVICE_UNAVAILABLE).body(ErrorResponse.of(e.getMessage()));
+    }
+
+    /** 상류(LLM) 응답이 기대한 형식과 다를 때. 502 Bad Gateway 가 가장 가깝다. */
+    @ExceptionHandler(InvalidLlmResponseException.class)
+    public ResponseEntity<ErrorResponse> handleInvalidLlmResponse(InvalidLlmResponseException e) {
+        return ResponseEntity.status(HttpStatus.BAD_GATEWAY).body(ErrorResponse.of(e.getMessage()));
     }
 
     /**

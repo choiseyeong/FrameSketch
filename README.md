@@ -51,18 +51,9 @@
 - Node.js 20 이상
 - Google Gemini API 키 ([발급](https://aistudio.google.com/apikey))
 
-### 1. API 키 설정
 
-`backend/.env` 파일을 만들고 키를 적습니다. 이 파일은 `.gitignore` 대상입니다.
 
-```
-GEMINI_API_KEY=발급받은_키
-```
-
-> 따옴표로 감싸지 마세요. 파일은 **BOM 없는 UTF-8**이어야 합니다.
-> 키가 없어도 애플리케이션은 실행되며, 목차 생성 기능만 비활성화됩니다.
-
-### 2. 백엔드 실행 (8080)
+### 1. 백엔드 실행 (8080)
 
 ```bash
 cd backend
@@ -71,7 +62,7 @@ cd backend
 
 DB 파일(`backend/data/framesketch.db`)과 테이블은 첫 실행 때 자동으로 만들어집니다.
 
-### 3. 프론트엔드 실행 (5173)
+### 2. 프론트엔드 실행 (5173)
 
 ```bash
 cd frontend
@@ -81,22 +72,6 @@ npm run dev
 
 `/api` 요청은 8080으로 프록시됩니다.
 
-### 동작 확인
-
-브라우저에서 <http://localhost:8080/api/health> 를 엽니다.
-
-```json
-{
-  "status": "UP",
-  "sqliteVersion": "3.53.4",
-  "fts5Available": true,
-  "postCount": 0,
-  "geminiConfigured": true
-}
-```
-
-`fts5Available`이 `false`면 검색이 동작하지 않고, `geminiConfigured`가 `false`면 API 키를
-읽지 못한 것입니다.
 
 ## API
 
