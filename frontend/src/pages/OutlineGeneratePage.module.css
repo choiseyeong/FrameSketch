@@ -1,0 +1,137 @@
+.detailOptions {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-2);
+}
+
+/* 상세도 옵션 — 평상시엔 옅은 바탕, 선택되면 노란 바탕 + 상단에 포인트 바 */
+.detailOption {
+    position: relative;
+    background: var(--color-surface-alt);
+    border: 0;
+    padding: var(--space-3) var(--space-4);
+    text-align: left;
+    cursor: pointer;
+    transition: background var(--transition-fast);
+}
+.detailOption:hover {
+    background: var(--color-primary-soft);
+}
+.detailOption.selected {
+    background: var(--color-primary-soft);
+}
+.detailOption.selected::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--color-primary-strong);
+}
+
+.detailOptionLabel {
+    display: block;
+    font-weight: 600;
+    font-size: var(--font-md);
+    margin-bottom: 2px;
+    color: var(--color-text);
+}
+.detailOption.selected .detailOptionLabel {
+    color: #4a3900;
+}
+.detailOptionHint {
+    display: block;
+    font-size: var(--font-xs);
+    color: var(--color-text-muted);
+}
+
+/* --- 생성 결과 --- */
+
+.resultWrapper {
+    margin-top: var(--space-5);
+}
+
+.resultHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: var(--space-3);
+}
+
+.resultTitle {
+    font-size: var(--font-lg);
+    font-weight: 600;
+}
+
+.resultActions {
+    display: flex;
+    gap: var(--space-2);
+}
+
+/* 중복 처리 안내 — 왼쪽 포인트 바로만 강조 */
+.overlapNote {
+    background: var(--color-surface-alt);
+    padding: var(--space-3) var(--space-4);
+    margin-bottom: var(--space-4);
+    color: var(--color-text);
+    font-size: var(--font-sm);
+    line-height: 1.6;
+    box-shadow: inset 3px 0 0 var(--color-primary-strong);
+}
+
+.outlineList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+/* 아이템 사이는 여백만. 점선·테두리 모두 제거. */
+.outlineItem {
+    padding: var(--space-2) 0;
+}
+
+.outlineItemHeading {
+    display: flex;
+    align-items: baseline;
+    gap: var(--space-2);
+}
+
+.outlineItemNote {
+    margin-top: var(--space-1);
+    font-size: var(--font-xs);
+    color: var(--color-text-muted);
+    font-style: italic;
+}
+
+/* 참고 글 영역은 위에 아주 옅은 여백 분리만 */
+.references {
+    margin-top: var(--space-5);
+    padding-top: var(--space-4);
+}
+
+.referencesTitle {
+    font-size: var(--font-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-2);
+}
+
+.referenceList {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    font-size: var(--font-sm);
+}
+.referenceList a {
+    color: var(--color-primary-strong);
+}
+.referenceList a:hover {
+    text-decoration: underline;
+}

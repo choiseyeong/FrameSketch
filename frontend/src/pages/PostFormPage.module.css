@@ -1,0 +1,54 @@
+.sections {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2);
+}
+
+.sectionRow {
+    display: grid;
+    grid-template-columns: 72px 1fr auto;
+    gap: var(--space-2);
+    align-items: center;
+}
+
+.sectionLevelSelect {
+    padding: var(--space-2);
+    border: 0;
+    background: var(--color-surface-alt);
+}
+
+.sectionHeadingInput {
+    padding: var(--space-2) var(--space-3);
+    border: 0;
+    background: var(--color-surface-alt);
+    transition: background var(--transition-fast), box-shadow var(--transition-fast);
+}
+.sectionHeadingInput:focus,
+.sectionLevelSelect:focus {
+    outline: none;
+    background: var(--color-surface);
+    box-shadow: inset 0 -2px 0 var(--color-primary-strong);
+}
+
+.addSectionRow {
+    margin-top: var(--space-3);
+}
+
+/* 들여쓰기 느낌: level 2 이상은 왼쪽 패딩 추가 */
+.levelIndent2 { margin-left: 24px; }
+.levelIndent3 { margin-left: 48px; }
+.levelIndent4,
+.levelIndent5,
+.levelIndent6 { margin-left: 72px; }
+
+.tagsInput {
+    width: 100%;
+    padding: var(--space-3);
+    border: 0;
+    background: var(--color-surface-alt);
+}
+.tagsInput:focus {
+    outline: none;
+    background: var(--color-surface);
+    box-shadow: inset 0 -2px 0 var(--color-primary-strong);
+}

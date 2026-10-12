@@ -1,0 +1,61 @@
+/*
+ * 전역 디자인 토큰.
+ *
+ * - 바탕은 거의 흰색에 가까운 아주 연한 노랑. 넓은 면적에 노랑을 깔면 피로해지기 때문에
+ *   눈치채기 어려울 정도로만 섞는다.
+ * - 카드와 입력창은 순수한 흰색이라 배경 위에서 자연스럽게 떠 보인다.
+ * - 포인트 색(버튼, 하이라이트, 상단 바)에만 좀 더 진한 노랑을 쓴다.
+ * - 어두운 노랑은 호버·활성 상태의 단 한 가지 역할만 맡는다.
+ */
+:root {
+    /* 색 */
+    --color-bg: #fffdf5;
+    --color-surface: #ffffff;
+    --color-surface-alt: #fffaeb;
+
+    --color-primary: #fde68a;
+    --color-primary-strong: #f59e0b;
+    --color-primary-soft: #fef3c7;
+
+    --color-text: #1f2937;
+    --color-text-muted: #6b7280;
+    --color-text-faint: #9ca3af;
+
+    --color-border: #f0e4bf;
+    --color-border-soft: #f1efe8;
+
+    --color-danger: #dc2626;
+    --color-danger-soft: #fee2e2;
+    --color-success: #16a34a;
+
+    /* 모서리 — 전부 날카롭게. 토큰 자체는 남겨 둬 특정 지점에서 모서리를 둥글게
+       하고 싶을 때 값만 바꾸면 되게 한다. */
+    --radius-sm: 0px;
+    --radius-md: 0px;
+    --radius-lg: 0px;
+
+    /* 그림자 — 테두리 대신 면을 분리하는 역할. 노란 톤을 섞어 뭉개지지 않게 한다. */
+    --shadow-sm: 0 1px 2px rgba(120, 100, 40, 0.05);
+    --shadow-md: 0 4px 14px rgba(120, 100, 40, 0.08);
+
+    /* 공백 */
+    --space-1: 4px;
+    --space-2: 8px;
+    --space-3: 12px;
+    --space-4: 16px;
+    --space-5: 24px;
+    --space-6: 32px;
+    --space-8: 48px;
+
+    /* 글꼴 크기 */
+    --font-xs: 12px;
+    --font-sm: 13px;
+    --font-base: 14px;
+    --font-md: 15px;
+    --font-lg: 18px;
+    --font-xl: 22px;
+    --font-2xl: 28px;
+
+    /* 상호작용 */
+    --transition-fast: 120ms ease;
+}

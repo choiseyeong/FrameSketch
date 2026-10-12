@@ -1,0 +1,54 @@
+/* 로딩·에러·빈 데이터 세 가지 표시에 공통으로 쓰는 박스. */
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: var(--space-3);
+    padding: var(--space-8) var(--space-4);
+    text-align: center;
+    color: var(--color-text-muted);
+}
+
+/* 상태 뱃지. 전체 디자인에 맞추어 사각형으로 둔다. */
+.icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-primary-soft);
+    color: var(--color-primary-strong);
+    font-size: var(--font-lg);
+    font-weight: 700;
+}
+
+.message {
+    font-size: var(--font-md);
+    color: var(--color-text);
+}
+
+.hint {
+    font-size: var(--font-sm);
+    color: var(--color-text-muted);
+    max-width: 420px;
+}
+
+.error .icon {
+    background: var(--color-danger-soft);
+    color: var(--color-danger);
+}
+
+.spinner {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 3px solid var(--color-primary-soft);
+    border-top-color: var(--color-primary-strong);
+    animation: spin 0.9s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
